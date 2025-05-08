@@ -23,42 +23,19 @@
                 <p class="text-xl mb-8">A STYLE THAT NOT EVERYONE CAN UNDERSTAND, BUT FEW KNOW HOW TO CARRY</p>
             </div>
         </div>
-
     </div>
 
-    <!-- Sezione con le Foto Sotto il Video -->
-    {{-- <div class="container mx-auto py-16">
-        <h2 class="text-3xl font-bold text-center mb-8">Discover the new collection</h2>
+    {{-- SECONDO VIDEO COLLEZIONE ABBIGLIAMENTO --}}
+    <div class="relative w-full h-dvh">
+        <!-- Video visibile solo su dispositivi desktop (xl e superiori) -->
+        <video class="w-full h-full object-cover" autoplay muted loop>
+            <source src="/img/video/video-2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="">
-                <img class="w-full h-64 object-cover rounded" src="/img/gallery_home/B1.jpeg" alt="Project 1">
-            </div>
-            <div class="">
-                <img class="w-full h-64 object-cover rounded" src="/img/gallery_home/B2.jpeg" alt="Project 2">
-            </div>
-            <div class="">
-                <img class="w-full h-full object-cover rounded" src="/img/gallery_home/B3.jpeg" alt="Project 3">
-            </div>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
-            <div class="">
-                <img class="w-full h-64 object-cover rounded" src="/img/gallery_home/B3.jpeg" alt="Project 1">
-            </div>
-            <div class="">
-                <img class="w-full h-64 object-cover rounded" src="/img/gallery_home/B4.jpeg" alt="Project 2">
-            </div>
-            <div class="">
-                <img class="w-full h-64 object-cover rounded" src="/img/gallery_home/b8.jpeg" alt="Project 3">
-            </div>
-        </div>
-    </div> --}}
-
-
-
-
-<div class="grid grid-cols-2 gap-2">
+    {{-- SEZIONE FOTO EVENTI --}}
+    <div class="grid grid-cols-2 gap-2">
         <div>
             <img class="h-auto max-w-full rounded-lg" src="/img/gallery_home/B1.jpeg" alt="">
         </div>
@@ -74,8 +51,8 @@
     </div>
 
 
+    {{-- SEZIONE FOTO ABBIGLIAMENTO --}}
     <div class="mt-20">
-
         <h2 class="text-3xl font-bold text-center mb-8">Discover the new collection</h2>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10">
             <div class="grid gap-4">
@@ -127,5 +104,3 @@
 
 
 @endsection
-
-{{-- test1fffff--}}
