@@ -73,7 +73,7 @@
 
         <!-- Centro: LOGO -->
         <div class="mx-auto">
-            <a href="https://stanceland.com/" class="flex items-center space-x-3">
+            <a href="/" class="flex items-center space-x-3">
                 <img src="/img/logo/logo3.png" class="h-8 w-auto" alt="Stanceland Logo">
             </a>
         </div>

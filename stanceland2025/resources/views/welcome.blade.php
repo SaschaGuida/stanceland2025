@@ -40,28 +40,23 @@
         <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
             <!-- Item 1 -->
             <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                <img src="/img/gallery_home/B1.jpeg"
-                    class="absolute block w-full " alt="...">
+                <img src="/img/gallery_home/B1.jpeg" class="absolute block w-full " alt="...">
             </div>
             <!-- Item 2 -->
             <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                <img src="/img/gallery_home/B2.jpeg"
-                    class="absolute block w-full " alt="...">
+                <img src="/img/gallery_home/B2.jpeg" class="absolute block w-full " alt="...">
             </div>
             <!-- Item 3 -->
             <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                <img src="/img/gallery_home/B3.jpeg"
-                    class="absolute block w-full" alt="...">
+                <img src="/img/gallery_home/B3.jpeg" class="absolute block w-full" alt="...">
             </div>
             <!-- Item 4 -->
             <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                <img src="/img/gallery_home/B4.jpeg"
-                    class="absolute block w-full " alt="...">
+                <img src="/img/gallery_home/B4.jpeg" class="absolute block w-full " alt="...">
             </div>
             <!-- Item 5 -->
             <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                <img src="/img/gallery_home/b12.jpeg"
-                    class="absolute block w-full " alt="...">
+                <img src="/img/gallery_home/b12.jpeg" class="absolute block w-full " alt="...">
             </div>
         </div>
         <!-- Slider indicators -->
@@ -109,53 +104,139 @@
     {{-- SEZIONE FOTO ABBIGLIAMENTO --}}
     <div class="mt-20">
         <h2 class="text-3xl font-bold text-center mb-8">Discover the new collection</h2>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10">
-            <div class="grid gap-4">
-                <div>
-                    <img class="h-auto max-w-full rounded-lg" src="/img/gallery_home/B1.jpeg" alt="">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 mt-10">
+            <div class="grid">
+                <div class="relative">
+                    <img class="h-auto max-w-full" src="/img/gallery_home/B1.jpeg" alt="">
+                    <div class="absolute bottom-4 left-0 right-0 text-center">
+                        <p class="text-white text-xl mb-4">Sample Text</p>
+                        <a href="https://tuo-link.com"
+                            class="text-fontcolor border border-fontcolor hover:bg-fontcolor hover:text-background focus:outline-none rounded-lg text-sm px-4 py-2 mt-2 transition-colors">
+                            Shop Now
+                        </a>
+                    </div>
                 </div>
-                <div>
-                    <img class="h-auto max-w-full rounded-lg" src="/img/gallery_home/B2.jpeg" alt="">
+                <div class="relative">
+                    <img class="h-auto max-w-full" src="/img/gallery_home/B2.jpeg" alt="">
+                    <div class="absolute bottom-4 left-0 right-0 text-center">
+                        <p class="text-white text-xl mb-4">Sample Text</p>
+                        <a href="https://tuo-link.com"
+                            class="text-fontcolor border border-fontcolor hover:bg-fontcolor hover:text-background focus:outline-none rounded-lg text-sm px-4 py-2 mt-2 transition-colors">
+                            Shop Now
+                        </a>
+                    </div>
                 </div>
-                <div>
-                    <img class="h-auto max-w-full rounded-lg" src="/img/gallery_home/B3.jpeg" alt="">
+                <div class="relative">
+                    <img class="h-auto max-w-full" src="/img/gallery_home/B3.jpeg" alt="">
+                    <div class="absolute bottom-4 left-0 right-0 text-center">
+                        <p class="text-white text-xl mb-4">Sample Text</p>
+                        <a href="https://tuo-link.com"
+                            class="text-fontcolor border border-fontcolor hover:bg-fontcolor hover:text-background focus:outline-none rounded-lg text-sm px-4 py-2 mt-2 transition-colors">
+                            Shop Now
+                        </a>
+                    </div>
                 </div>
             </div>
-            <div class="grid gap-4">
-                <div>
-                    <img class="h-auto max-w-full rounded-lg" src="/img/gallery_home/B4.jpeg" alt="">
+            <div class="grid">
+                <div class="relative">
+                    <img class="h-auto max-w-full" src="/img/gallery_home/B4.jpeg" alt="">
+                    <div class="absolute bottom-4 left-0 right-0 text-center">
+                        <p class="text-white text-xl mb-4">Sample Text</p>
+                        <a href="https://tuo-link.com"
+                            class="text-fontcolor border border-fontcolor hover:bg-fontcolor hover:text-background focus:outline-none rounded-lg text-sm px-4 py-2 mt-2 transition-colors">
+                            Shop Now
+                        </a>
+                    </div>
                 </div>
-                <div>
-                    <img class="h-auto max-w-full rounded-lg" src="/img/gallery_home/b8.jpeg" alt="">
+                <div class="relative">
+                    <img class="h-auto max-w-full" src="/img/gallery_home/b8.jpeg" alt="">
+                    <div class="absolute bottom-4 left-0 right-0 text-center">
+                        <p class="text-white text-xl mb-4">Sample Text</p>
+                        <a href="https://tuo-link.com"
+                            class="text-fontcolor border border-fontcolor hover:bg-fontcolor hover:text-background focus:outline-none rounded-lg text-sm px-4 py-2 mt-2 transition-colors">
+                            Shop Now
+                        </a>
+                    </div>
                 </div>
-                <div>
-                    <img class="h-auto max-w-full rounded-lg" src="/img/gallery_home/b12.jpeg" alt="">
+                <div class="relative">
+                    <img class="h-auto max-w-full" src="/img/gallery_home/b12.jpeg" alt="">
+                    <div class="absolute bottom-4 left-0 right-0 text-center">
+                        <p class="text-white text-xl mb-4">Sample Text</p>
+                        <a href="https://tuo-link.com"
+                            class="text-fontcolor border border-fontcolor hover:bg-fontcolor hover:text-background focus:outline-none rounded-lg text-sm px-4 py-2 mt-2 transition-colors">
+                            Shop Now
+                        </a>
+                    </div>
                 </div>
             </div>
-            <div class="grid gap-4">
-                <div>
-                    <img class="h-auto max-w-full rounded-lg" src="/img/gallery_home/B13.jpeg" alt="">
+            <div class="grid">
+                <div class="relative">
+                    <img class="h-auto max-w-full" src="/img/gallery_home/B13.jpeg" alt="">
+                    <div class="absolute bottom-4 left-0 right-0 text-center">
+                        <p class="text-white text-xl mb-4">Sample Text</p>
+                        <a href="https://tuo-link.com"
+                            class="text-fontcolor border border-fontcolor hover:bg-fontcolor hover:text-background focus:outline-none rounded-lg text-sm px-4 py-2 mt-2 transition-colors">
+                            Shop Now
+                        </a>
+                    </div>
                 </div>
-                <div>
-                    <img class="h-auto max-w-full rounded-lg" src="/img/gallery_home/c1.jpeg" alt="">
+                <div class="relative">
+                    <img class="h-auto max-w-full" src="/img/gallery_home/c1.jpeg" alt="">
+                    <div class="absolute bottom-4 left-0 right-0 text-center">
+                        <p class="text-white text-xl mb-4">Sample Text</p>
+                        <a href="https://tuo-link.com"
+                            class="text-fontcolor border border-fontcolor hover:bg-fontcolor hover:text-background focus:outline-none rounded-lg text-sm px-4 py-2 mt-2 transition-colors">
+                            Shop Now
+                        </a>
+                    </div>
                 </div>
-                <div>
-                    <img class="h-auto max-w-full rounded-lg" src="/img/gallery_home/c2.jpeg" alt="">
+                <div class="relative">
+                    <img class="h-auto max-w-full" src="/img/gallery_home/c2.jpeg" alt="">
+                    <div class="absolute bottom-4 left-0 right-0 text-center">
+                        <p class="text-white text-xl mb-4">Sample Text</p>
+                        <a href="https://tuo-link.com"
+                            class="text-fontcolor border border-fontcolor hover:bg-fontcolor hover:text-background focus:outline-none rounded-lg text-sm px-4 py-2 mt-2 transition-colors">
+                            Shop Now
+                        </a>
+                    </div>
                 </div>
             </div>
-            <div class="grid gap-4">
-                <div>
-                    <img class="h-auto max-w-full rounded-lg" src="/img/gallery_home/B1.jpeg" alt="">
+            <div class="grid">
+                <div class="relative">
+                    <img class="h-auto max-w-full" src="/img/gallery_home/B1.jpeg" alt="">
+                    <div class="absolute bottom-4 left-0 right-0 text-center">
+                        <p class="text-white text-xl mb-4">Sample Text</p>
+                        <a href="https://tuo-link.com"
+                            class="text-fontcolor border border-fontcolor hover:bg-fontcolor hover:text-background focus:outline-none rounded-lg text-sm px-4 py-2 mt-2 transition-colors">
+                            Shop Now
+                        </a>
+                    </div>
                 </div>
-                <div>
-                    <img class="h-auto max-w-full rounded-lg" src="/img/gallery_home/B1.jpeg" alt="">
+                <div class="relative">
+                    <img class="h-auto max-w-full" src="/img/gallery_home/B1.jpeg" alt="">
+                    <div class="absolute bottom-4 left-0 right-0 text-center">
+                        <p class="text-white text-xl mb-4">Sample Text</p>
+                        <a href="https://tuo-link.com"
+                            class="text-fontcolor border border-fontcolor hover:bg-fontcolor hover:text-background focus:outline-none rounded-lg text-sm px-4 py-2 mt-2 transition-colors">
+                            Shop Now
+                        </a>
+                    </div>
                 </div>
-                <div>
-                    <img class="h-auto max-w-full rounded-lg" src="/img/gallery_home/B1.jpeg" alt="">
+                <div class="relative">
+                    <img class="h-auto max-w-full" src="/img/gallery_home/B1.jpeg" alt="">
+                    <div class="absolute bottom-4 left-0 right-0 text-center">
+                        <p class="text-white text-xl mb-4">Sample Text</p>
+                        <a href="https://tuo-link.com"
+                            class="text-fontcolor border border-fontcolor hover:bg-fontcolor hover:text-background focus:outline-none rounded-lg text-sm px-4 py-2 mt-2 transition-colors">
+                            Shop Now
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+
 
 
 @endsection
