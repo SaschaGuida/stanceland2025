@@ -66,7 +66,7 @@
     <div class="max-w-screen-xl mx-auto flex items-center justify-between p-4 relative">
 
         <!-- Sinistra: HOME e SHOP -->
-        <div class="hidden md:flex space-x-6 absolute left-4">
+        <div class="hidden md:flex space-x-6 absolute left-[20rem] md:left-[10rem]">
             <a href="/" class="text-fontcolor hover:text-white transition-colors">HOME</a>
             <a href="https://shop.stanceland.com" class="text-fontcolor hover:text-white transition-colors">SHOP</a>
         </div>
@@ -79,7 +79,7 @@
         </div>
 
         <!-- Destra: EVENT e CONTACT -->
-        <div class="hidden md:flex space-x-6 absolute right-28">
+        <div class="hidden md:flex space-x-6 absolute right-[20rem] md:right-[10rem]">
             <a href="{{ route('event') }}" class="text-fontcolor hover:text-white transition-colors">EVENT</a>
             <a href="{{ route('contact') }}" class="text-fontcolor hover:text-white transition-colors">CONTACT</a>
         </div>
@@ -117,23 +117,23 @@
 
     <!-- Mobile menu -->
     <div class="md:hidden hidden px-4 pb-4" id="mobile-menu">
-        <ul class="flex flex-col space-y-2 font-medium bg-background border-t border-gray-700 pt-4">
-            <li><a href="/" class="text-fontcolor hover:text-white transition-colors">HOME</a></li>
-            <li><a href="https://shop.stanceland.com" class="text-fontcolor hover:text-white transition-colors">SHOP</a>
+        <ul class="flex flex-col space-y-2 font-medium bg-background border-t border-gray-700 pt-4 items-center m-5 p-4">
+            <li><a href="/" class="text-fontcolor hover:text-white transition-colors m-5 p-4">HOME</a></li>
+            <li><a href="https://shop.stanceland.com" class="text-fontcolor hover:text-white transition-colors m-5 p-4">SHOP</a>
             </li>
-            <li><a href="{{ route('event') }}" class="text-fontcolor hover:text-white transition-colors">EVENT</a></li>
-            <li><a href="{{ route('contact') }}" class="text-fontcolor hover:text-white transition-colors">CONTACT</a>
+            <li><a href="{{ route('event') }}" class="text-fontcolor hover:text-white transition-colors m-5 p-4">EVENT</a></li>
+            <li><a href="{{ route('contact') }}" class="text-fontcolor hover:text-white transition-colors m-5 p-4">CONTACT</a>
             </li>
             <li>
                 @if (Route::has('login'))
                     @auth
                         <a href="{{ url('/dashboard') }}"
-                            class="block text-fontcolor border border-fontcolor hover:bg-fontcolor hover:text-background rounded-lg text-sm px-4 py-2 text-center transition-colors">
+                            class="block text-fontcolor border border-fontcolor hover:bg-fontcolor hover:text-background rounded-lg text-sm px-4 py-2 text-center transition-colors mt-5 p-4">
                             Dashboard
                         </a>
                     @else
                         <a href="{{ route('login') }}"
-                            class="block text-fontcolor border border-fontcolor hover:bg-fontcolor hover:text-background rounded-lg text-sm px-4 py-2 text-center transition-colors">
+                            class="block text-fontcolor border border-fontcolor hover:bg-fontcolor hover:text-background rounded-lg text-sm px-4 py-2 text-center transition-colors mt-5 p-4">
                             Log in
                         </a>
                     @endauth
@@ -141,4 +141,5 @@
             </li>
         </ul>
     </div>
+
 </nav>

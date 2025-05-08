@@ -15,6 +15,8 @@ export default {
                 background: '#0E0C0A', //nero
                 fontcolor: '#EFEDE3', //bianco
                 specialcolor: '#E52E25', //arancio
+                buttoncolor: '#2A241E', //nero più chiaro
+                buttoncolorhover: '#0E0C0A', //nero più scuro
             },
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],

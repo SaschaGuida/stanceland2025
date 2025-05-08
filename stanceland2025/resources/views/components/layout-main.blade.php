@@ -23,7 +23,7 @@
         <x-navbar />
     </header>
 
-        <div class="container mx-auto">
+    <div class="container mx-auto">
         @yield('content')
     </div>
 
