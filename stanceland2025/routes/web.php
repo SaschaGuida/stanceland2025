@@ -11,6 +11,18 @@ Route::get('event', function () {
     return view('event');
 })->name(name: 'event');
 
+Route::get('/events/nord', function () {
+    return view('events.eventonord');
+})->name('events.eventonord');
+
+Route::get('/events/sud', function () {
+    return view('events.eventosud');
+})->name('events.eventosud');
+
+Route::get('/events/applications', function () {
+    return view('events.applications');
+})->name('events.applications');
+
 Route::get('contact', function () {
     return view('contact');
 })->name('contact');
