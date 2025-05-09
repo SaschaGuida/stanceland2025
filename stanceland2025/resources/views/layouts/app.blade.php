@@ -22,16 +22,16 @@
         <x-navbar />
     </header>
 
-{{--     <div class="w-full bg-gray-100">
+    {{-- <div class="w-full bg-gray-100">
         @include('layouts.navigation')
 
         <!-- Page Heading -->
         @isset($header)
-            <header class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    {{ $header }}
-                </div>
-            </header>
+        <header class="bg-white shadow">
+            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                {{ $header }}
+            </div>
+        </header>
         @endisset
 
         <!-- Page Content -->
@@ -42,21 +42,23 @@
 
 
     <div class="w-full min-h-screen bg-gray-100">
-    @include('layouts.navigation')
+        @include('layouts.navigation')
 
-    @isset($header)
-        <header class="bg-white shadow w-full">
-            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                {{ $header }}
-            </div>
-        </header>
-    @endisset
+        @isset($header)
+            <header class="bg-white shadow w-full">
+                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                    {{ $header }}
+                </div>
+            </header>
+        @endisset
 
-    <main class="w-full px-4">
-        {{ $slot }}
-    </main>
-</div>
+        <main class="w-full px-4">
+            {{ $slot }}
+        </main>
+    </div>
 
 </body>
+
+<script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
 
 </html>

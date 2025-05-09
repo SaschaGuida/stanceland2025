@@ -6,7 +6,7 @@
     </x-slot>
 
     {{-- TOAST BENVENUTO --}}
-    <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 5000)" x-show="show"
+    <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 500)" x-show="show"
         class="fixed top-5 right-5 bg-green-100 text-green-800 text-sm px-4 py-2 rounded shadow transition-opacity duration-300"
         style="z-index: 9999;">
         👋 Benvenuto, {{ Auth::user()->name }}!
