@@ -3,17 +3,16 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\EventApplicationController;
 use App\Http\Controllers\DashboardController;
-
+use App\Http\Controllers\Admin\EventController;
+use App\Http\Controllers\EventApplicationController;
+use App\Http\Controllers\PublicEventController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('event', function () {
-    return view('event');
-})->name(name: 'event');
+Route::get('event', [PublicEventController::class, 'index'])->name('event');
 
 Route::get('/events/nord', function () {
     return view('events.eventonord');
@@ -22,7 +21,6 @@ Route::get('/events/nord', function () {
 Route::get('/events/sud', function () {
     return view('events.eventosud');
 })->name('events.eventosud');
-
 
 Route::match(['get', 'post'], '/events/applications', [EventApplicationController::class, 'handle'])->name('events.applications');
 
@@ -34,10 +32,6 @@ Route::get('contact', function () {
     return view('contact');
 })->name('contact');
 
-/* Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard'); */
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -48,9 +42,11 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::get('/nord', [AdminController::class, 'nord'])->name('nord');
     Route::get('/sud', [AdminController::class, 'sud'])->name('sud');
     Route::get('/users', [AdminController::class, 'users'])->name('users');
-    Route::get('/eventi', [AdminController::class, 'eventi'])->name('eventi');
+
+    // Eventi
+    Route::get('/eventi', [EventController::class, 'index'])->name('eventi');
+    Route::get('/eventi/{event}/edit', [EventController::class, 'edit'])->name('eventi.edit');
+    Route::put('/eventi/{event}', [EventController::class, 'update'])->name('eventi.update');
 });
 
 require __DIR__ . '/auth.php';
-
-/* test */
