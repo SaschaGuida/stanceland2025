@@ -29,7 +29,7 @@
 
             <p><strong>Vehicle Applications:</strong><br>
                 Applications open in May 2025<br>
-                <a href="{{ route('events.applications')}}" class="underline hover:text-black">Apply here</a>
+                <a href="{{ route('events.applications', ['evento' => 'sud']) }}" class="underline hover:text-black">Apply here</a>
             </p>
         </div>
 

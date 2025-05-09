@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EventApplicationController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -19,9 +20,11 @@ Route::get('/events/sud', function () {
     return view('events.eventosud');
 })->name('events.eventosud');
 
-Route::get('/events/applications', function () {
-    return view('events.applications');
-})->name('events.applications');
+/* Route::post('/events/applications', [EventApplicationController::class, 'store'])
+->name('events.applications'); */
+
+Route::match(['get', 'post'], '/events/applications', [EventApplicationController::class, 'handle'])->name('events.applications');
+
 
 Route::get('contact', function () {
     return view('contact');

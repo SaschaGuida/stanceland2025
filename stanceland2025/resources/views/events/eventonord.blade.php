@@ -50,7 +50,7 @@
 
             <p><strong>Vehicle Applications:</strong><br>
                 Open from 01.02.2025, 19:00<br>
-                <a href="{{-- {{ route('events.applications')}} --}}" class="underline hover:text-black">Coming Soon</a>
+                <a href="{{ route('events.applications', ['evento' => 'nord']) }}" class="underline hover:text-black">Coming Soon</a>
             </p>
         </div>
 
