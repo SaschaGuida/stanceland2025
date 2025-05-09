@@ -24,24 +24,27 @@
 
             {{-- Form Evento NORD --}}
             <form action="{{ route('admin.eventi.update', 'nord') }}" method="POST" enctype="multipart/form-data"
-                class="bg-white shadow sm:rounded-lg p-6 space-y-4">
+                class="bg-fontcolor border-2 border-buttoncolorhover sm:rounded-lg p-6 space-y-4">
                 @csrf
                 @method('PUT')
 
-                <h3 class="text-xl font-semibold">Evento Nord</h3>
+                <h3 class="text-xl font-semibold justify-center flex">Evento STANCELAND Nord</h3>
 
                 <x-input-label value="Titolo" />
-                <x-text-input name="titolo" value="{{ old('titolo', $eventoNord->titolo) }}" class="w-full" />
+                <x-text-input name="titolo" value="{{ old('titolo', $eventoNord->titolo) }}"
+                    class="form-input w-full bg-fontcolor text-buttoncolorhover border-gray-300 focus:border-fontcolor focus:ring-fontcolor" />
 
                 <x-input-label value="Descrizione" />
                 <textarea name="descrizione"
-                    class="form-textarea w-full">{{ old('descrizione', $eventoNord->descrizione) }}</textarea>
+                    class="form-textarea form-input w-full bg-fontcolor text-buttoncolorhover border-gray-300 focus:border-fontcolor focus:ring-fontcolor">{{ old('descrizione', $eventoNord->descrizione) }}</textarea>
 
                 <x-input-label value="Data" />
-                <x-text-input name="data" type="date" value="{{ old('data', $eventoNord->data) }}" class="w-full" />
+                <x-text-input name="data" type="date" value="{{ old('data', $eventoNord->data) }}"
+                    class="form-input w-full bg-fontcolor text-buttoncolorhover border-gray-300 focus:border-fontcolor focus:ring-fontcolor" />
 
                 <x-input-label value="Immagine" />
-                <input type="file" name="immagine" class="form-input w-full" />
+                <input type="file" name="immagine"
+                    class="form-input w-full bg-fontcolor text-buttoncolorhover border-gray-300 focus:border-fontcolor focus:ring-fontcolor" />
 
                 <label class="flex items-center">
                     <input type="checkbox" name="mostra_ticket" {{ $eventoNord->abilita_ticket ? 'checked' : '' }}
@@ -55,29 +58,35 @@
                     <span>Mostra bottone selezioni</span>
                 </label>
 
-                <x-primary-button>Salva Evento Nord</x-primary-button>
+                <div class="flex justify-center">
+                    <x-primary-button>Salva Evento Nord</x-primary-button>
+                </div>
             </form>
+
 
             {{-- Form Evento SUD --}}
             <form action="{{ route('admin.eventi.update', 'sud') }}" method="POST" enctype="multipart/form-data"
-                class="bg-white shadow sm:rounded-lg p-6 space-y-4">
+                class="bg-fontcolor border-2 border-background sm:rounded-lg p-6 space-y-4">
                 @csrf
                 @method('PUT')
 
-                <h3 class="text-xl font-semibold">Evento Sud</h3>
+                <h3 class="text-xl font-semibold flex justify-center">Evento STANCELAND Sud</h3>
 
                 <x-input-label value="Titolo" />
-                <x-text-input name="titolo" value="{{ old('titolo', $eventoSud->titolo) }}" class="w-full" />
+                <x-text-input name="titolo" value="{{ old('titolo', $eventoSud->titolo) }}"
+                    class="form-input w-full bg-fontcolor text-buttoncolorhover border-gray-300 focus:border-fontcolor focus:ring-fontcolor " />
 
                 <x-input-label value="Descrizione" />
                 <textarea name="descrizione"
-                    class="form-textarea w-full">{{ old('descrizione', $eventoSud->descrizione) }}</textarea>
+                    class="form-textarea form-input w-full bg-fontcolor text-buttoncolorhover border-gray-300 focus:border-fontcolor focus:ring-fontcolor">{{ old('descrizione', $eventoSud->descrizione) }}</textarea>
 
                 <x-input-label value="Data" />
-                <x-text-input name="data" type="date" value="{{ old('data', $eventoSud->data) }}" class="w-full" />
+                <x-text-input name="data" type="date" value="{{ old('data', $eventoSud->data) }}"
+                    class="form-input w-full bg-fontcolor text-buttoncolorhover border-gray-300 focus:border-fontcolor focus:ring-fontcolor" />
 
                 <x-input-label value="Immagine" />
-                <input type="file" name="immagine" class="form-input w-full" />
+                <input type="file" name="immagine"
+                    class="form-input form-input w-full bg-fontcolor text-buttoncolorhover border-gray-300 focus:border-fontcolor focus:ring-fontcolor" />
 
                 <label class="flex items-center">
                     <input type="checkbox" name="mostra_ticket" {{ $eventoSud->abilita_ticket ? 'checked' : '' }}
@@ -91,7 +100,9 @@
                     <span>Mostra bottone selezioni</span>
                 </label>
 
-                <x-primary-button>Salva Evento Sud</x-primary-button>
+                <div class="flex justify-center">
+                    <x-primary-button>Salva Evento Sud</x-primary-button>
+                </div>
             </form>
 
         </div>
