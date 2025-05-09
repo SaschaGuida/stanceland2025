@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EventApplicationController;
+use App\Http\Controllers\DashboardController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -21,19 +23,20 @@ Route::get('/events/sud', function () {
     return view('events.eventosud');
 })->name('events.eventosud');
 
-/* Route::post('/events/applications', [EventApplicationController::class, 'store'])
-->name('events.applications'); */
 
 Route::match(['get', 'post'], '/events/applications', [EventApplicationController::class, 'handle'])->name('events.applications');
 
+Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
 
 Route::get('contact', function () {
     return view('contact');
 })->name('contact');
 
-Route::get('/dashboard', function () {
+/* Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard'); */
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -41,11 +44,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
-    Route::get('/admin/nord', [AdminController::class, 'nord'])->name('nord');
-    Route::get('/admin/sud', [AdminController::class, 'sud'])->name('sud');
-    Route::get('/admin/users', [AdminController::class, 'users'])->name('users');
-    Route::get('/admin/eventi', [AdminController::class, 'eventi'])->name('eventi');
+Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/nord', [AdminController::class, 'nord'])->name('nord');
+    Route::get('/sud', [AdminController::class, 'sud'])->name('sud');
+    Route::get('/users', [AdminController::class, 'users'])->name('users');
+    Route::get('/eventi', [AdminController::class, 'eventi'])->name('eventi');
 });
 
 require __DIR__ . '/auth.php';

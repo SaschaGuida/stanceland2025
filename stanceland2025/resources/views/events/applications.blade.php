@@ -15,9 +15,11 @@
                 {{ $titolo }}
             </div>
 
-            <form class="max-w-sm mx-auto" method="POST" action="{{ route('events.applications') }}"
+            <form class="max-w-sm mx-auto" method="POST" action="{{ route('events.applications', ['evento' => request('evento', 'nord')]) }}"
                 enctype="multipart/form-data">
                 @csrf
+
+                <input type="hidden" name="evento" value="{{ request('evento', 'nord') }}">
 
                 <div class="mb-5">
                     <label for="nome" class="block mb-2 text-sm font-medium text-fontcolor dark:text-white">Name</label>

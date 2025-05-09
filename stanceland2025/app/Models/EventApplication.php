@@ -24,5 +24,6 @@ class EventApplication extends Model
         'foto1',
         'foto2',
         'foto3',
+        'evento',
     ];
 }

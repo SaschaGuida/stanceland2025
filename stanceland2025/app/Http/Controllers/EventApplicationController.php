@@ -27,11 +27,17 @@ class EventApplicationController extends Controller
                 'anno' => 'required|integer|min:1960|max:' . $annoCorrente,
                 'modifiche' => 'required|string',
                 'targa' => 'required|string',
-                'foto1' => 'nullable|image',
-                'foto2' => 'nullable|image',
-                'foto3' => 'nullable|image',
+                'foto1' => 'nullable|image|max:2048',
+                'foto2' => 'nullable|image|max:2048',
+                'foto3' => 'nullable|image|max:2048',
             ]);
 
+            // Verifica se l'utente ha già inviato una candidatura
+            if (EventApplication::where('email', $data['email'])->exists()) {
+                return redirect()->back()->with('success', 'Hai già inviato la selezione.');
+            }
+
+            // Salva le immagini
             foreach (['foto1', 'foto2', 'foto3'] as $foto) {
                 if ($request->hasFile($foto)) {
                     $filename = time() . '_' . $foto . '.' . $request->file($foto)->getClientOriginalExtension();
@@ -40,14 +46,8 @@ class EventApplicationController extends Controller
                 }
             }
 
-
-            if (EventApplication::where('email', $request->email)->exists()) {
-                return redirect()->back()->with('success', 'Hai già inviato la selezione.');
-            }
-
-            if (EventApplication::where('anno', $request->email)->exists()) {
-                return redirect()->back()->with('success', 'Inserisci un anno valido.');
-            }
+            // Salva anche l'evento (es. ?evento=nord)
+            $data['evento'] = $request->query('evento', 'nord'); // fallback su 'nord'
 
             EventApplication::create($data);
 
