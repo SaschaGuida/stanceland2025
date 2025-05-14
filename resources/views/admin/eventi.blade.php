@@ -17,7 +17,7 @@
     <div class="py-12">
         @if(session('success'))
             <div class="mb-6 p-4 bg-green-100 text-green-800 rounded shadow">
-                {{ session('success') }}
+                {{ session('success') }} 
             </div>
         @endif
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8 space-y-10">
@@ -86,7 +86,7 @@
 
                 <x-input-label value="Immagine" />
                 <input type="file" name="immagine"
-                    class="form-input form-input w-full bg-fontcolor text-buttoncolorhover border-gray-300 focus:border-fontcolor focus:ring-fontcolor" />
+                    class="form-input w-full bg-fontcolor text-buttoncolorhover border-gray-300 focus:border-fontcolor focus:ring-fontcolor" />
 
                 <label class="flex items-center">
                     <input type="checkbox" name="mostra_ticket" {{ $eventoSud->abilita_ticket ? 'checked' : '' }}
