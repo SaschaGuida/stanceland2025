@@ -2,7 +2,7 @@
 
 @section('content')
 
-    {{-- SEZIONE 1 - EVENTO NORD (sfondo nero, immagine bassa e larga) --}}
+    {{-- SEZIONE 1 - EVENTO NORD (sfondo nero, immagine bassa e larga prova) --}}
     <section class="w-full bg-background text-fontcolor mt-10">
         <div class="flex flex-col lg:flex-row w-full h-[400px]">
             <!-- Immagine -->
