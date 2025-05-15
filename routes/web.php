@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\EventApplicationController;
 use App\Http\Controllers\PublicEventController;
+use App\Http\Controllers\ContactController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -31,6 +32,8 @@ Route::get('/dashboard', [DashboardController::class, 'index'])
 Route::get('contact', function () {
     return view('contact');
 })->name('contact');
+
+Route::post('contact', [ContactController::class, 'send'])->name('contact.send');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
