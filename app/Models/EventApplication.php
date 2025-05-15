@@ -26,4 +26,9 @@ class EventApplication extends Model
         'foto3',
         'evento',
     ];
+
+    protected $casts = [
+        'selezionato' => 'boolean',
+        'pagato' => 'boolean',
+    ];
 }

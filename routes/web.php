@@ -50,6 +50,13 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::get('/eventi', [EventController::class, 'index'])->name('eventi');
     Route::get('/eventi/{event}/edit', [EventController::class, 'edit'])->name('eventi.edit');
     Route::put('/eventi/{event}', [EventController::class, 'update'])->name('eventi.update');
+
+    // 🔽 Aggiungi questa
+    Route::get('/selezioni/{id}', [AdminController::class, 'dettaglio'])->name('dettaglio');
+
+    Route::post('/selezioni/{id}/aggiorna', [AdminController::class, 'aggiornaSelezione'])->name('selezioni.aggiorna');
+
 });
+
 
 require __DIR__ . '/auth.php';
