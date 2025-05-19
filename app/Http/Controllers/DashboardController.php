@@ -31,7 +31,7 @@ class DashboardController extends Controller
         // Se è un utente normale
         $application = EventApplication::where('email', $user->email)->first();
 
-        return view('user.userdashboard', compact('application'));
+        return view('user.userselection', compact('application'));
     }
 
     public function userselection(): View

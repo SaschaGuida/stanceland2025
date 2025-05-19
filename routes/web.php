@@ -9,57 +9,56 @@ use App\Http\Controllers\EventApplicationController;
 use App\Http\Controllers\PublicEventController;
 use App\Http\Controllers\ContactController;
 
+// Homepage
 Route::get('/', function () {
     return view('welcome');
 });
 
+// Pagina eventi pubblici
 Route::get('event', [PublicEventController::class, 'index'])->name('event');
 
-Route::get('/events/nord', function () {
-    return view('events.eventonord');
-})->name('events.eventonord');
+// Pagine statiche evento nord e sud
+Route::get('/events/nord', fn () => view('events.eventonord'))->name('events.eventonord');
+Route::get('/events/sud', fn () => view('events.eventosud'))->name('events.eventosud');
 
-Route::get('/events/sud', function () {
-    return view('events.eventosud');
-})->name('events.eventosud');
-
+// Form selezione eventi (GET e POST)
 Route::match(['get', 'post'], '/events/applications', [EventApplicationController::class, 'handle'])->name('events.applications');
 
+// Dashboard dopo login (differenziata in controller)
 Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
+// Vista con i dettagli della selezione per l'utente loggato
 Route::get('/user/selection', [DashboardController::class, 'userselection'])
+    ->middleware(['auth'])
     ->name('user.userselection');
 
-
-Route::get('contact', function () {
-    return view('contact');
-})->name('contact');
-
+// Contatti
+Route::get('contact', fn () => view('contact'))->name('contact');
 Route::post('contact', [ContactController::class, 'send'])->name('contact.send');
 
+// Area profilo utente
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
+// Area amministrazione (protetta da middleware admin)
+Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/nord', [AdminController::class, 'nord'])->name('nord');
     Route::get('/sud', [AdminController::class, 'sud'])->name('sud');
     Route::get('/users', [AdminController::class, 'users'])->name('users');
 
-    // Eventi
+    // Gestione eventi
     Route::get('/eventi', [EventController::class, 'index'])->name('eventi');
     Route::get('/eventi/{event}/edit', [EventController::class, 'edit'])->name('eventi.edit');
     Route::put('/eventi/{event}', [EventController::class, 'update'])->name('eventi.update');
 
-    // 🔽 Aggiungi questa
+    // Dettagli selezione + azioni
     Route::get('/selezioni/{id}', [AdminController::class, 'dettaglio'])->name('dettaglio');
-
     Route::post('/selezioni/{id}/aggiorna', [AdminController::class, 'aggiornaSelezione'])->name('selezioni.aggiorna');
 });
-
 
 require __DIR__ . '/auth.php';
