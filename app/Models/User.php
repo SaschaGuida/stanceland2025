@@ -45,4 +45,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function selezione()
+    {
+        return $this->hasOne(\App\Models\EventApplication::class, 'email', 'email');
+    }
 }

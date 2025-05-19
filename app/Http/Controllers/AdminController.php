@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\EventApplication;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class AdminController extends Controller
 {
@@ -22,7 +23,7 @@ class AdminController extends Controller
         return view('admin.nord', compact('selezioniNord', 'soloSelezionati'));
     }
 
-        public function sud(Request $request)
+    public function sud(Request $request)
     {
         $soloSelezionati = $request->query('selezionati') === '1';
 
@@ -38,7 +39,10 @@ class AdminController extends Controller
 
     public function users()
     {
-        return view('admin.users');
+        // Recupera solo gli utenti che hanno fatto almeno una selezione
+        $usersWithSelections = User::whereHas('selezione')->get();
+
+        return view('admin.users', compact('usersWithSelections'));
     }
 
     public function eventi()

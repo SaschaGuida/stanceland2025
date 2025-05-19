@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Ciao {{ Auth::user()->name }}!
+            Hello {{ Auth::user()->name }}!
         </h2>
     </x-slot>
 
@@ -9,91 +9,82 @@
         @if ($application)
             <div class="bg-white shadow rounded-xl overflow-hidden p-6 space-y-8">
 
-                {{-- Titolo e stato selezione --}}
+                {{-- Title and selection status --}}
                 <div class="flex items-center justify-between">
-                    <h3 class="text-xl font-bold text-gray-800">Dettagli della tua selezione</h3>
+                    <h3 class="text-xl font-bold text-gray-800">Your Application Details</h3>
 
                     <div class="space-y-3">
-                        {{-- Stato --}}
+                        {{-- Status --}}
                         <div>
                             @if (is_null($application->selezionato))
-                                <span
-                                    class="inline-flex items-center px-3 py-1 text-sm font-medium bg-yellow-100 text-yellow-800 rounded-full">
-                                    🕓 In corso
+                                <span class="inline-flex items-center px-3 py-1 text-sm font-medium bg-yellow-100 text-yellow-800 rounded-full">
+                                    🕓 In progress
                                 </span>
                             @elseif ($application->selezionato === false)
-                                <span
-                                    class="inline-flex items-center px-3 py-1 text-sm font-medium bg-red-100 text-red-800 rounded-full">
-                                    ✖ Non selezionato
+                                <span class="inline-flex items-center px-3 py-1 text-sm font-medium bg-red-100 text-red-800 rounded-full">
+                                    ✖ Not selected
                                 </span>
                             @elseif ($application->selezionato && !$application->pagato)
-                                <span
-                                    class="inline-flex items-center px-3 py-1 text-sm font-medium bg-green-100 text-green-800 rounded-full">
-                                    ✔ Selezionato
+                                <span class="inline-flex items-center px-3 py-1 text-sm font-medium bg-green-100 text-green-800 rounded-full">
+                                    ✔ Selected
                                 </span>
-                                <span
-                                    class="ml-2 inline-flex items-center px-3 py-1 text-sm font-medium bg-gray-100 text-gray-700 rounded-full">
-                                    💸 Non pagato
+                                <span class="ml-2 inline-flex items-center px-3 py-1 text-sm font-medium bg-gray-100 text-gray-700 rounded-full">
+                                    💸 Not paid
                                 </span>
                             @elseif ($application->selezionato && $application->pagato)
-                                <span
-                                    class="inline-flex items-center px-3 py-1 text-sm font-medium bg-green-100 text-green-800 rounded-full">
-                                    ✔ Selezionato
+                                <span class="inline-flex items-center px-3 py-1 text-sm font-medium bg-green-100 text-green-800 rounded-full">
+                                    ✔ Selected
                                 </span>
-                                <span
-                                    class="ml-2 inline-flex items-center px-3 py-1 text-sm font-medium bg-blue-100 text-blue-800 rounded-full">
-                                    💰 Pagato
+                                <span class="ml-2 inline-flex items-center px-3 py-1 text-sm font-medium bg-blue-100 text-blue-800 rounded-full">
+                                    💰 Paid
                                 </span>
                             @endif
                         </div>
 
-                        {{-- Messaggi dinamici --}}
+                        {{-- Dynamic messages --}}
                         @if ($application->selezionato === false)
                             <div class="p-4 bg-red-50 border border-red-200 text-sm text-red-800 rounded-md">
-                                Purtroppo la tua vettura non è stata selezionata, ma ti aspettiamo con piacere come visitatore!
-                                🙏
+                                Unfortunately, your vehicle was not selected, but we’d be happy to see you as a visitor! 🙏
                             </div>
                         @elseif ($application->selezionato && !$application->pagato)
                             <div class="p-4 bg-green-50 border border-green-200 text-sm text-green-800 rounded-md space-y-2">
-                                <p>🎉 Complimenti! La tua vettura è stata selezionata per l'evento.</p>
-                                <p>Segui le istruzioni qui riportate per completare la selezione:</p>
+                                <p>🎉 Congratulations! Your vehicle has been selected for the event.</p>
+                                <p>Follow the instructions below to complete your application:</p>
 
-                                {{-- Placeholder per pulsante PayPal --}}
+                                {{-- PayPal button placeholder --}}
                                 <div class="mt-2">
                                     <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-                                        {{-- Inserisci i tuoi parametri PayPal reali qui --}}
+                                        {{-- Replace with real PayPal parameters --}}
                                         <input type="hidden" name="cmd" value="_s-xclick">
                                         <input type="hidden" name="hosted_button_id" value="CODICE_TUO_BOTTONE">
                                         <button type="submit"
                                             class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded shadow text-sm">
-                                            Paga con PayPal
+                                            Pay with PayPal
                                         </button>
                                     </form>
                                 </div>
                             </div>
                         @elseif ($application->selezionato && $application->pagato)
                             <div class="p-4 bg-blue-50 border border-blue-200 text-sm text-blue-800 rounded-md">
-                                ✅ Hai già completato il pagamento. Riceverai presto maggiori dettagli via email.
+                                ✅ You’ve already completed the payment. You will receive more details via email soon.
                             </div>
                         @endif
                     </div>
-
-
                 </div>
 
-                {{-- Tabella info --}}
+                {{-- Info table --}}
                 <table class="w-full text-sm text-left text-gray-700 border-t">
                     <tbody class="divide-y divide-gray-100">
                         <tr>
-                            <th class="py-3 pr-4 font-medium w-40">Evento:</th>
+                            <th class="py-3 pr-4 font-medium w-40">Event:</th>
                             <td class="uppercase">{{ $application->evento }}</td>
                         </tr>
                         <tr>
-                            <th class="py-3 pr-4 font-medium">Nome:</th>
+                            <th class="py-3 pr-4 font-medium">First Name:</th>
                             <td>{{ $application->nome }}</td>
                         </tr>
                         <tr>
-                            <th class="py-3 pr-4 font-medium">Cognome:</th>
+                            <th class="py-3 pr-4 font-medium">Last Name:</th>
                             <td>{{ $application->cognome }}</td>
                         </tr>
                         <tr>
@@ -101,23 +92,23 @@
                             <td>{{ $application->email }}</td>
                         </tr>
                         <tr>
-                            <th class="py-3 pr-4 font-medium">Telefono:</th>
+                            <th class="py-3 pr-4 font-medium">Phone:</th>
                             <td>{{ $application->telefono }}</td>
                         </tr>
                         <tr>
-                            <th class="py-3 pr-4 font-medium">Indirizzo:</th>
+                            <th class="py-3 pr-4 font-medium">Address:</th>
                             <td>{{ $application->indirizzo }}</td>
                         </tr>
                         <tr>
-                            <th class="py-3 pr-4 font-medium">Città:</th>
+                            <th class="py-3 pr-4 font-medium">City:</th>
                             <td>{{ $application->citta }}</td>
                         </tr>
                         <tr>
-                            <th class="py-3 pr-4 font-medium">Stato:</th>
+                            <th class="py-3 pr-4 font-medium">Country:</th>
                             <td>{{ $application->stato }}</td>
                         </tr>
                         <tr>
-                            <th class="py-3 pr-4 font-medium">CAP:</th>
+                            <th class="py-3 pr-4 font-medium">ZIP Code:</th>
                             <td>{{ $application->zip }}</td>
                         </tr>
                         <tr>
@@ -125,35 +116,35 @@
                             <td>{{ $application->instagram }}</td>
                         </tr>
                         <tr>
-                            <th class="py-3 pr-4 font-medium">Marca:</th>
+                            <th class="py-3 pr-4 font-medium">Brand:</th>
                             <td>{{ $application->marca }}</td>
                         </tr>
                         <tr>
-                            <th class="py-3 pr-4 font-medium">Modello:</th>
+                            <th class="py-3 pr-4 font-medium">Model:</th>
                             <td>{{ $application->modello }}</td>
                         </tr>
                         <tr>
-                            <th class="py-3 pr-4 font-medium">Anno:</th>
+                            <th class="py-3 pr-4 font-medium">Year:</th>
                             <td>{{ $application->anno }}</td>
                         </tr>
                         <tr>
-                            <th class="py-3 pr-4 font-medium">Targa:</th>
+                            <th class="py-3 pr-4 font-medium">License Plate:</th>
                             <td>{{ $application->targa }}</td>
                         </tr>
                         <tr>
-                            <th class="py-3 pr-4 font-medium align-top">Modifiche:</th>
+                            <th class="py-3 pr-4 font-medium align-top">Modifications:</th>
                             <td>{{ $application->modifiche }}</td>
                         </tr>
                         <tr>
-                            <th class="py-3 pr-4 font-medium">Data invio:</th>
+                            <th class="py-3 pr-4 font-medium">Submission Date:</th>
                             <td>{{ $application->created_at->format('d/m/Y') }}</td>
                         </tr>
                     </tbody>
                 </table>
 
-                {{-- Foto caricate --}}
+                {{-- Uploaded Photos --}}
                 <div>
-                    <h4 class="text-md font-semibold mb-2">Foto caricate</h4>
+                    <h4 class="text-md font-semibold mb-2">Uploaded Photos</h4>
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                         @foreach (['foto1', 'foto2', 'foto3'] as $foto)
                             @if ($application->$foto)
@@ -166,7 +157,7 @@
             </div>
         @else
             <div class="text-center text-gray-500 text-lg">
-                Nessuna selezione trovata associata al tuo account.
+                No application found linked to your account.
             </div>
         @endif
     </div>

@@ -22,26 +22,25 @@
                 <input type="hidden" name="evento" value="{{ request('evento', 'nord') }}">
 
                 <div class="mb-5">
-                    <label for="nome" class="block mb-2 text-sm font-medium text-fontcolor dark:text-white">Name</label>
+                    <label for="nome" class="block mb-2 text-sm font-medium text-fontcolor dark:text-white">First Name</label>
                     <input type="text" id="nome" name="nome" class="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
             focus:border-fontcolor focus:ring-fontcolor block w-full p-2.5 
             dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
-            dark:focus:border-fontcolor dark:focus:ring-fontcolor" placeholder="Name" required />
+            dark:focus:border-fontcolor dark:focus:ring-fontcolor" placeholder="John" required />
                 </div>
 
                 <div class="mb-5">
                     <label for="cognome"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Cognome</label>
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last Name</label>
                     <input type="text" id="cognome" name="cognome" class="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
             focus:border-fontcolor focus:ring-fontcolor block w-full p-2.5 
             dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
-            dark:focus:border-fontcolor dark:focus:ring-fontcolor" placeholder="Rossi" required />
+            dark:focus:border-fontcolor dark:focus:ring-fontcolor" placeholder="Doe" required />
                 </div>
 
 
                 <div class="mb-5">
-                    <label for="telefono" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Numero di
-                        telefono</label>
+                    <label for="telefono" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone Number</label>
                     <input type="tel" id="telefono" name="telefono" class="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
             focus:border-fontcolor focus:ring-fontcolor block w-full p-2.5 
             dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
@@ -58,15 +57,15 @@
 
                 <div class="mb-5">
                     <label for="indirizzo"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Indirizzo</label>
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address</label>
                     <input type="text" id="indirizzo" name="indirizzo" class="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
             focus:border-fontcolor focus:ring-fontcolor block w-full p-2.5 
             dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
-            dark:focus:border-fontcolor dark:focus:ring-fontcolor" placeholder="Via Roma 1" required />
+            dark:focus:border-fontcolor dark:focus:ring-fontcolor" placeholder="123 Main St" required />
                 </div>
 
                 <div class="mb-5">
-                    <label for="citta" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Città</label>
+                    <label for="citta" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">City</label>
                     <input type="text" id="citta" name="citta" class="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
             focus:border-fontcolor focus:ring-fontcolor block w-full p-2.5 
             dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
@@ -74,15 +73,15 @@
                 </div>
 
                 <div class="mb-5">
-                    <label for="stato" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Stato</label>
+                    <label for="stato" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Country</label>
                     <input type="text" id="stato" name="stato" class="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
             focus:border-fontcolor focus:ring-fontcolor block w-full p-2.5 
             dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
-            dark:focus:border-fontcolor dark:focus:ring-fontcolor" placeholder="Italia" required />
+            dark:focus:border-fontcolor dark:focus:ring-fontcolor" placeholder="Italy" required />
                 </div>
 
                 <div class="mb-5">
-                    <label for="zip" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">CAP</label>
+                    <label for="zip" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ZIP Code</label>
                     <input type="text" id="zip" name="zip" class="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
             focus:border-fontcolor focus:ring-fontcolor block w-full p-2.5 
             dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
@@ -99,7 +98,7 @@
                 </div>
 
                 <div class="mb-5">
-                    <label for="marca" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Marca</label>
+                    <label for="marca" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Brand</label>
                     <input type="text" id="marca" name="marca" class="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
             focus:border-fontcolor focus:ring-fontcolor block w-full p-2.5 
             dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
@@ -108,15 +107,15 @@
 
                 <div class="mb-5">
                     <label for="modello"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Modello</label>
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Model</label>
                     <input type="text" id="modello" name="modello" class="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
             focus:border-fontcolor focus:ring-fontcolor block w-full p-2.5 
             dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
-            dark:focus:border-fontcolor dark:focus:ring-fontcolor" placeholder="Serie 3" required />
+            dark:focus:border-fontcolor dark:focus:ring-fontcolor" placeholder="Series 3" required />
                 </div>
 
                 <div class="mb-5">
-                    <label for="anno" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Anno</label>
+                    <label for="anno" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Year</label>
                     <input type="number" id="anno" name="anno" value="{{ old('anno') }}" class="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
             focus:border-fontcolor focus:ring-fontcolor block w-full p-2.5 
             dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
@@ -129,16 +128,16 @@
 
                 <div class="mb-5">
                     <label for="modifiche"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Modifiche</label>
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Modifications</label>
                     <textarea id="modifiche" name="modifiche" class="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
             focus:border-fontcolor focus:ring-fontcolor block w-full p-2.5 
             dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
-            dark:focus:border-fontcolor dark:focus:ring-fontcolor" placeholder="Sospensioni, cerchi, wrap..."
+            dark:focus:border-fontcolor dark:focus:ring-fontcolor" placeholder="Suspension, wheels, wrap..."
                         rows="3" required></textarea>
                 </div>
 
                 <div class="mb-5">
-                    <label for="targa" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Targa</label>
+                    <label for="targa" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">License Plate</label>
                     <input type="text" id="targa" name="targa" class="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
             focus:border-fontcolor focus:ring-fontcolor block w-full p-2.5 
             dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
