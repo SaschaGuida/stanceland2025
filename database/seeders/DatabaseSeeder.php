@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Admin Radu Alagel',
             'email' => 'info@stanceland.com',
             'password' => Hash::make('Stanceland2014@'),
+            'role' => 'admin'
         ]);
 
         // SUPER ADMIN
@@ -26,6 +27,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Superadmin Sascha Guida',
             'email' => 'sascha@stanceland.com',
             'password' => Hash::make('SaschaStanceland2014@'),
+            'role' => 'admin'
         ]);
 
         // UTENTE DI TEST
@@ -33,6 +35,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'testuser@stanceland.com',
             'password' => Hash::make('TestStanceland2024@'),
+            'role' => 'user'
         ]);
 
         Event::create([

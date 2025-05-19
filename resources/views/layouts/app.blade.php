@@ -42,7 +42,11 @@
 
 
     <div class="w-full min-h-screen bg-fontcolor">
-        @include('layouts.navigation')
+        @if (Auth::check() && Auth::user()->role === 'admin')
+            @include('layouts.navigation')
+        @else
+            @include('layouts.usernavigation')
+        @endif
 
         @isset($header)
             <header class="bg-fontcolor shadow w-full">

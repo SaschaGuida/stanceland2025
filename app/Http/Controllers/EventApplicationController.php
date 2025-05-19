@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\EventApplication;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class EventApplicationController extends Controller
 {
@@ -32,7 +36,6 @@ class EventApplicationController extends Controller
                 'foto3' => 'nullable|image|max:2048',
             ]);
 
-            // Verifica se l'utente ha già inviato una candidatura
             if (EventApplication::where('email', $data['email'])->exists()) {
                 return redirect()->back()->with('success', 'Hai già inviato la selezione.');
             }
@@ -47,11 +50,28 @@ class EventApplicationController extends Controller
             }
 
             // Salva anche l'evento (es. ?evento=nord)
-            $data['evento'] = $request->query('evento', 'nord'); // fallback su 'nord'
+            $data['evento'] = $request->query('evento', 'nord');
 
             EventApplication::create($data);
 
-            return redirect()->back()->with('success', 'Application submitted successfully!');
+            // ✅ CREA UTENTE se non esiste
+            if (!User::where('email', $data['email'])->exists()) {
+                $password = Str::random(10); // password generata
+                $user = User::create([
+                    'name' => $data['nome'] . ' ' . $data['cognome'],
+                    'email' => $data['email'],
+                    'password' => Hash::make($password),
+                    'role' => 'user', // assicurati che il campo esista
+                ]);
+
+                // ✅ INVIA MAIL CON CREDENZIALI
+                Mail::raw("Ciao {$user->name},\n\nBenvenuto su Stanceland!\n\nPuoi accedere alla tua dashboard con:\n\nEmail: {$user->email}\nPassword: {$password}\n\nTi consigliamo di cambiarla al primo accesso.", function ($message) use ($user) {
+                    $message->to($user->email)
+                            ->subject('Accesso alla tua dashboard Stanceland');
+                });
+            }
+
+            return redirect()->back()->with('success', 'Selezione inviata con successo! Controlla la tua email per le credenziali di accesso.');
         }
 
         $evento = $request->query('evento');

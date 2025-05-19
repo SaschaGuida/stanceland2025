@@ -23,6 +23,11 @@
                     <p class="underline">
                         Car apply until {{ \Carbon\Carbon::parse($eventoNord->data)->subDays(6)->format('d.m.Y') }}
                     </p>
+                    
+                    <a href="{{ route('events.eventonord') }}"
+                        class="block border border-fontcolor text-fontcolor hover:bg-fontcolor hover:text-background rounded-lg text-sm px-4 py-2 transition">
+                        Info
+                    </a>
 
                     @if($eventoNord->abilita_selezione)
                         <a href="{{ route('events.applications', ['evento' => 'nord']) }}"
@@ -38,10 +43,6 @@
                         </a>
                     @endif
 
-                    <a href="{{ route('events.eventonord') }}"
-                        class="block border border-fontcolor text-fontcolor hover:bg-fontcolor hover:text-background rounded-lg text-sm px-4 py-2 transition">
-                        Info
-                    </a>
                 </div>
             </div>
         </div>
@@ -63,6 +64,11 @@
                         Car apply until {{ \Carbon\Carbon::parse($eventoSud->data)->subDays(6)->format('d.m.Y') }}
                     </p>
 
+                    <a href="{{ route('events.eventosud') }}"
+                        class="block border border-black text-black hover:bg-black hover:text-white rounded-lg text-sm px-4 py-2 transition">
+                        Info
+                    </a>
+                    
                     @if($eventoSud->abilita_selezione)
                         <a href="{{ route('events.applications', ['evento' => 'sud']) }}"
                             class="block border border-black text-black hover:bg-black hover:text-white rounded-lg text-sm px-4 py-2 transition">
@@ -77,10 +83,6 @@
                         </a>
                     @endif
 
-                    <a href="{{ route('events.eventosud') }}"
-                        class="block border border-black text-black hover:bg-black hover:text-white rounded-lg text-sm px-4 py-2 transition">
-                        Info
-                    </a>
                 </div>
             </div>
 

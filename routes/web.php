@@ -29,6 +29,10 @@ Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
+Route::get('/user/selection', [DashboardController::class, 'userselection'])
+    ->name('user.userselection');
+
+
 Route::get('contact', function () {
     return view('contact');
 })->name('contact');
@@ -55,7 +59,6 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::get('/selezioni/{id}', [AdminController::class, 'dettaglio'])->name('dettaglio');
 
     Route::post('/selezioni/{id}/aggiorna', [AdminController::class, 'aggiornaSelezione'])->name('selezioni.aggiorna');
-
 });
 
 
