@@ -22,7 +22,7 @@ class ContactController extends Controller
             'messaggio' => 'required|string',
         ]);
 
-        Mail::to('sascha.guida@gmail.com')->send(new ContactMessage($validated));
+        Mail::to('info@stanceland.com')->send(new ContactMessage($validated));
 
         return back()->with('success', 'Messaggio inviato con successo!');
     }
