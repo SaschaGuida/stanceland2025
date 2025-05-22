@@ -8,6 +8,9 @@ use Illuminate\Support\Str;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use SendGrid;
+use SendGrid\Mail\Mail as SendGridMail;
+use Illuminate\Support\Facades\Log;
 
 class EventApplicationController extends Controller
 {
@@ -65,10 +68,23 @@ class EventApplicationController extends Controller
                 ]);
 
                 // ✅ INVIA MAIL CON CREDENZIALI
-                Mail::raw("Ciao {$user->name},\n\nBenvenuto su Stanceland!\n\nPuoi accedere alla tua dashboard con:\n\nEmail: {$user->email}\nPassword: {$password}\n\nTi consigliamo di cambiarla al primo accesso.", function ($message) use ($user) {
-                    $message->to($user->email)
-                            ->subject('Accesso alla tua dashboard Stanceland');
-                });
+                try {
+                    $email = new SendGridMail();
+                    $email->setFrom("selection@stanceland.com", "Stanceland");
+                    $email->setSubject("Accesso alla tua dashboard Stanceland");
+                    $email->addTo($user->email, $user->name);
+                    $email->addContent(
+                        "text/plain",
+                        "Ciao {$user->name},\n\nBenvenuto su Stanceland!\n\nPuoi accedere alla tua dashboard con:\n\nEmail: {$user->email}\nPassword: {$password}\n\nTi consigliamo di cambiarla al primo accesso."
+                    );
+
+                    $sendgrid = new SendGrid(env('SENDGRID_API_KEY'));
+                    $response = $sendgrid->send($email);
+
+                    Log::info('Email utente inviata via SendGrid', ['email' => $user->email, 'status' => $response->statusCode()]);
+                } catch (\Exception $e) {
+                    Log::error('Errore invio email SendGrid per utente: ' . $e->getMessage());
+                }
             }
 
             return redirect()->back()->with('success', 'Selezione inviata con successo! Controlla la tua email per le credenziali di accesso.');

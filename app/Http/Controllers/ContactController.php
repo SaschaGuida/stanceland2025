@@ -25,10 +25,10 @@ class ContactController extends Controller
         ]);
 
         $email = new Mail();
-        $email->setFrom("info@stanceland.com", "Stanceland");
+        $email->setFrom("selection@stanceland.com", "Stanceland");
         $email->setSubject("Nuovo messaggio dal form contatti");
 
-        $email->addTo("info@stanceland.com", "Stanceland");
+        $email->addTo("selection@stanceland.com", "Stanceland");
         $email->addContent(
             "text/plain",
             "Hai ricevuto un nuovo messaggio da: {$validated['nome']} {$validated['cognome']} ({$validated['email']})\n\nMessaggio:\n{$validated['messaggio']}"
