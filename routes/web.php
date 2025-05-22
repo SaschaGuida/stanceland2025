@@ -20,6 +20,7 @@ Route::get('event', [PublicEventController::class, 'index'])->name('event');
 // Pagine statiche evento nord e sud
 Route::get('/events/nord', fn () => view('events.eventonord'))->name('events.eventonord');
 Route::get('/events/sud', fn () => view('events.eventosud'))->name('events.eventosud');
+Route::get('/events/giappone', fn () => view('events.eventogiappone'))->name('events.eventogiappone');
 
 // Form selezione eventi (GET e POST)
 Route::match(['get', 'post'], '/events/applications', [EventApplicationController::class, 'handle'])->name('events.applications');
@@ -49,6 +50,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/nord', [AdminController::class, 'nord'])->name('nord');
     Route::get('/sud', [AdminController::class, 'sud'])->name('sud');
+    Route::get('/giappone', [AdminController::class, 'giappone'])->name('giappone');
     Route::get('/users', [AdminController::class, 'users'])->name('users');
 
     // Gestione eventi

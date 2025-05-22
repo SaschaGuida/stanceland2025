@@ -37,6 +37,20 @@ class AdminController extends Controller
         return view('admin.sud', compact('selezioniSud', 'soloSelezionati'));
     }
 
+        public function giappone(Request $request)
+    {
+        $soloSelezionati = $request->query('selezionati') === '1';
+
+        $selezioniGiappone = EventApplication::where('evento', 'giappone')
+            ->when($soloSelezionati, function ($query) {
+                $query->where('selezionato', true);
+            })
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        return view('admin.giappone', compact('selezioniGiappone', 'soloSelezionati'));
+    }
+
     public function users()
     {
         // Recupera solo gli utenti che hanno fatto almeno una selezione

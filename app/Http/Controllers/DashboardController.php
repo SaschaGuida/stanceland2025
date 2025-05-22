@@ -18,12 +18,14 @@ class DashboardController extends Controller
             $totalApplications = EventApplication::count();
             $countNord = EventApplication::where('evento', 'nord')->count();
             $countSud = EventApplication::where('evento', 'sud')->count();
+            $countGiappone = EventApplication::where('evento', 'giappone')->count();
             $latestApplications = EventApplication::latest()->take(5)->get();
 
             return view('admin.dashboard', compact(
                 'totalApplications',
                 'countNord',
                 'countSud',
+                'countGiappone',
                 'latestApplications'
             ));
         }

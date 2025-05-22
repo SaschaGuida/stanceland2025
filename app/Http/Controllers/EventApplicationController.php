@@ -79,6 +79,7 @@ class EventApplicationController extends Controller
         $titolo = match ($evento) {
             'nord' => 'Application Form Stanceland Nord',
             'sud' => 'Application Form Stanceland Ceprano-Falvaterra',
+            'giappone' => 'Application Form Stanceland Giappone',
             default => 'Application Form'
         };
 

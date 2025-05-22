@@ -16,6 +16,9 @@
                     <x-nav-link :href="route('admin.sud')" :active="request()->is('admin/sud')">
                         Selezioni Sud
                     </x-nav-link>
+                    <x-nav-link :href="route('admin.giappone')" :active="request()->is('admin/giappone')">
+                        Selezioni Giappone
+                    </x-nav-link>
                     <x-nav-link :href="route('admin.users')" :active="request()->is('admin/users')">
                         Gestione Utenti
                     </x-nav-link>
@@ -82,6 +85,9 @@
                     </x-nav-link>
                     <x-nav-link :href="route('admin.sud')" :active="request()->is('admin/sud')">
                         Selezioni Sud
+                    </x-nav-link>
+                    <x-nav-link :href="route('admin.giappone')" :active="request()->is('admin/giappone')">
+                        Selezioni Giappone
                     </x-nav-link>
                     <x-nav-link :href="route('admin.users')" :active="request()->is('admin/users')">
                         Gestione Utenti

@@ -11,7 +11,8 @@ class PublicEventController extends Controller
 {
     $eventoNord = Event::where('slug', 'nord')->firstOrFail();
     $eventoSud = Event::where('slug', 'sud')->firstOrFail();
+    $eventoGiappone = Event::where('slug', 'giappone')->firstOrFail();
 
-    return view('event', compact('eventoNord', 'eventoSud'));
+    return view('event', compact('eventoNord', 'eventoSud', 'eventoGiappone'));
 }
 }

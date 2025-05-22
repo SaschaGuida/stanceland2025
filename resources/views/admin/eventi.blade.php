@@ -9,7 +9,7 @@
     <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 500)" x-show="show"
         class="fixed top-5 right-5 bg-green-100 text-green-800 text-sm px-4 py-2 rounded shadow transition-opacity duration-300"
         style="z-index: 9999;">
-        👋 Benvenuto,  {{ Auth::user()->name }}!
+        👋 Benvenuto, {{ Auth::user()->name }}!
     </div>
 
 
@@ -17,7 +17,7 @@
     <div class="py-12">
         @if(session('success'))
             <div class="mb-6 p-4 bg-green-100 text-green-800 rounded shadow">
-                {{ session('success') }} 
+                {{ session('success') }}
             </div>
         @endif
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8 space-y-10">
@@ -102,6 +102,47 @@
 
                 <div class="flex justify-center">
                     <x-primary-button>Salva Evento Sud</x-primary-button>
+                </div>
+            </form>
+
+            {{-- Form Evento GIAPPONE --}}
+            <form action="{{ route('admin.eventi.update', 'giappone') }}" method="POST" enctype="multipart/form-data"
+                class="bg-fontcolor border-2 border-background sm:rounded-lg p-6 space-y-4">
+                @csrf
+                @method('PUT')
+
+                <h3 class="text-xl font-semibold flex justify-center">Evento STANCELAND GIAPPONE</h3>
+
+                <x-input-label value="Titolo" />
+                <x-text-input name="titolo" value="{{ old('titolo', $eventoGiappone->titolo) }}"
+                    class="form-input w-full bg-fontcolor text-buttoncolorhover border-gray-300 focus:border-fontcolor focus:ring-fontcolor " />
+
+                <x-input-label value="Descrizione" />
+                <textarea name="descrizione"
+                    class="form-textarea form-input w-full bg-fontcolor text-buttoncolorhover border-gray-300 focus:border-fontcolor focus:ring-fontcolor">{{ old('descrizione', $eventoGiappone->descrizione) }}</textarea>
+
+                <x-input-label value="Data" />
+                <x-text-input name="data" type="date" value="{{ old('data', $eventoGiappone->data) }}"
+                    class="form-input w-full bg-fontcolor text-buttoncolorhover border-gray-300 focus:border-fontcolor focus:ring-fontcolor" />
+
+                <x-input-label value="Immagine" />
+                <input type="file" name="immagine"
+                    class="form-input w-full bg-fontcolor text-buttoncolorhover border-gray-300 focus:border-fontcolor focus:ring-fontcolor" />
+
+                <label class="flex items-center">
+                    <input type="checkbox" name="mostra_ticket" {{ $eventoGiappone->abilita_ticket ? 'checked' : '' }}
+                        class="mr-2">
+                    <span>Mostra bottone ticket</span>
+                </label>
+
+                <label class="flex items-center">
+                    <input type="checkbox" name="mostra_selezione" {{ $eventoGiappone->abilita_selezione ? 'checked' : '' }}
+                        class="mr-2">
+                    <span>Mostra bottone selezioni</span>
+                </label>
+
+                <div class="flex justify-center">
+                    <x-primary-button>Salva Evento Giappone</x-primary-button>
                 </div>
             </form>
 

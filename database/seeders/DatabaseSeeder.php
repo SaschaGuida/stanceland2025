@@ -61,5 +61,17 @@ class DatabaseSeeder extends Seeder
             'link_ticket' => null,
             'slug' => 'sud',
         ]);
+
+        Event::create([
+            'titolo' => 'Stanceland Giappone',
+            'data' => '2025-04-26',
+            'descrizione' => 'Evento in giappone',
+            'immagine' => 'img/eventi/eventogiappone.jpg',
+            'abilita_ticket' => true,
+            'abilita_selezione' => true,
+            'link_info' => '/events/giappone',
+            'link_ticket' => '#', // aggiorna se hai un link reale
+            'slug' => 'giappone',
+        ]);
     }
 }

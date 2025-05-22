@@ -12,8 +12,9 @@ class EventController extends Controller
     {
         $eventoNord = Event::where('slug', 'nord')->first();
         $eventoSud = Event::where('slug', 'sud')->first();
+        $eventoGiappone = Event::where('slug', 'giappone')->first();
 
-        return view('admin.eventi', compact('eventoNord', 'eventoSud'));
+        return view('admin.eventi', compact('eventoNord', 'eventoSud', 'eventoGiappone'));
     }
 
     public function edit(Event $event)
