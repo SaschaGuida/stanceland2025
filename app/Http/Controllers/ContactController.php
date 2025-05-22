@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\ContactMessage;
+use SendGrid;
+use SendGrid\Mail\Mail;
+use Illuminate\Support\Facades\Log;
+
 
 class ContactController extends Controller
 {
@@ -22,8 +24,29 @@ class ContactController extends Controller
             'messaggio' => 'required|string',
         ]);
 
-        Mail::to('info@stanceland.com')->send(new ContactMessage($validated));
+        $email = new Mail();
+        $email->setFrom("info@stanceland.com", "Stanceland");
+        $email->setSubject("Nuovo messaggio dal form contatti");
 
-        return back()->with('success', 'Messaggio inviato con successo!');
+        $email->addTo("info@stanceland.com", "Stanceland");
+        $email->addContent(
+            "text/plain",
+            "Hai ricevuto un nuovo messaggio da: {$validated['nome']} {$validated['cognome']} ({$validated['email']})\n\nMessaggio:\n{$validated['messaggio']}"
+        );
+
+        try {
+            $sendgrid = new SendGrid(getenv('SENDGRID_API_KEY'));
+            $response = $sendgrid->send($email);
+
+            if ($response->statusCode() >= 200 && $response->statusCode() < 300) {
+                return back()->with('success', 'Messaggio inviato con successo!');
+            } else {
+                Log::error('Errore invio email SendGrid: ' . $response->body());
+                return back()->with('error', 'Errore nell\'invio del messaggio. Riprova più tardi.');
+            }
+        } catch (\Exception $e) {
+            Log::error('Eccezione SendGrid: ' . $e->getMessage());
+            return back()->with('error', 'Errore durante l\'invio del messaggio. Riprova più tardi.');
+        }
     }
 }
