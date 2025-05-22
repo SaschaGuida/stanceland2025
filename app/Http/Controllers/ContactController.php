@@ -39,14 +39,14 @@ class ContactController extends Controller
             $response = $sendgrid->send($email);
 
             if ($response->statusCode() >= 200 && $response->statusCode() < 300) {
-                return back()->with('success', 'Messaggio inviato con successo!');
+                return back()->with('success', 'Your message has been successfully sent!');
             } else {
                 Log::error('Errore invio email SendGrid: ' . $response->body());
-                return back()->with('error', 'Errore nell\'invio del messaggio. Riprova più tardi.');
+                return back()->with('error', 'An error occurred while sending your message. Please try again later.');
             }
         } catch (\Exception $e) {
             Log::error('Eccezione SendGrid: ' . $e->getMessage());
-            return back()->with('error', 'Errore durante l\'invio del messaggio. Riprova più tardi.');
+            return back()->with('error', 'Something went wrong while sending your message. Please try again shortly.');
         }
     }
 }

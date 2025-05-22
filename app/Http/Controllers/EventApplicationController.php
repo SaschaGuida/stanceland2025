@@ -40,7 +40,7 @@ class EventApplicationController extends Controller
             ]);
 
             if (EventApplication::where('email', $data['email'])->exists()) {
-                return redirect()->back()->with('success', 'Hai già inviato la selezione.');
+                return redirect()->back()->with('success', 'An application associated with this email has already been received.');
             }
 
             // Salva le immagini
@@ -71,15 +71,33 @@ class EventApplicationController extends Controller
                 try {
                     $email = new SendGridMail();
                     $email->setFrom("selection@stanceland.com", "Stanceland");
-                    $email->setSubject("Accesso alla tua dashboard Stanceland");
+                    $email->setSubject("Access to Your Stanceland Dashboard");
                     $email->addTo($user->email, $user->name);
                     $email->addContent(
                         "text/plain",
-                        "Ciao {$user->name},\n\nBenvenuto su Stanceland!\n\nPuoi accedere alla tua dashboard con:\n\nEmail: {$user->email}\nPassword: {$password}\n\nTi consigliamo di cambiarla al primo accesso."
+                        "Hello {$user->name},\n\nWelcome to Stanceland!\n\nYou can access your personal dashboard using the credentials below:\n\nEmail: {$user->email}\nPassword: {$password}\n\nFor your security, we strongly recommend changing your password upon first login.\n\nSee you soon!\nThe Stanceland Team"
                     );
 
                     $sendgrid = new SendGrid(env('SENDGRID_API_KEY'));
                     $response = $sendgrid->send($email);
+
+                    // ✅ INVIA MAIL DI NOTIFICA A STANCELAND
+                    try {
+                        $notify = new SendGridMail();
+                        $notify->setFrom("selection@stanceland.com", "Stanceland");
+                        $notify->setSubject("Nuova Selezione ricevuta{$data['nome']} {$data['cognome']}");
+                        $notify->addTo("selection@stanceland.com", "Radu Alagel");
+                        $notify->addContent(
+                            "text/plain",
+                            "Una nuova selezione è stata inviata.\n\nNome: {$data['nome']} {$data['cognome']}\nEmail: {$data['email']}\nEvento: {$data['evento']}\nDate: " . now()->format('d/m/Y') . "\n\nAccedi alla dashboard per vedere i dettagli"
+                        );
+
+                        $sendgrid->send($notify);
+                        Log::info('Email notifica nuova selezione inviata', ['email' => 'selection@stanceland.com']);
+                    } catch (\Exception $e) {
+                        Log::error('Errore invio email notifica admin: ' . $e->getMessage());
+                    }
+
 
                     Log::info('Email utente inviata via SendGrid', ['email' => $user->email, 'status' => $response->statusCode()]);
                 } catch (\Exception $e) {
@@ -87,7 +105,7 @@ class EventApplicationController extends Controller
                 }
             }
 
-            return redirect()->back()->with('success', 'Selezione inviata con successo! Controlla la tua email per le credenziali di accesso.');
+            return redirect()->back()->with('success', 'Thank you for your submission! You will receive your login credentials via email shortly.');
         }
 
         $evento = $request->query('evento');

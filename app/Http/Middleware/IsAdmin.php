@@ -14,6 +14,6 @@ class IsAdmin
             return $next($request);
         }
 
-        abort(403, 'Accesso non autorizzato');
+        return redirect()->route('dashboard')->with('error', 'You are not authorized to access this section.');
     }
 }

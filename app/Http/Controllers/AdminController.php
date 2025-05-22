@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\EventApplication;
 use Illuminate\Http\Request;
 use App\Models\User;
+use SendGrid;
+use SendGrid\Mail\Mail as SendGridMail;
+use Illuminate\Support\Facades\Log;
 
 class AdminController extends Controller
 {
@@ -37,7 +40,7 @@ class AdminController extends Controller
         return view('admin.sud', compact('selezioniSud', 'soloSelezionati'));
     }
 
-        public function giappone(Request $request)
+    public function giappone(Request $request)
     {
         $soloSelezionati = $request->query('selezionati') === '1';
 
@@ -70,7 +73,7 @@ class AdminController extends Controller
         return view('admin.dettaglio', compact('selezione'));
     }
 
-    public function aggiornaSelezione(Request $request, $id)
+    /*     public function aggiornaSelezione(Request $request, $id)
     {
         $selezione = EventApplication::findOrFail($id);
 
@@ -85,5 +88,54 @@ class AdminController extends Controller
         $selezione->save();
 
         return back()->with('success', 'Stato aggiornato.');
+    } */
+
+    public function aggiornaSelezione(Request $request, $id)
+    {
+        $selezione = EventApplication::findOrFail($id);
+
+        if ($request->has('selezionato')) {
+            $selezione->selezionato = $request->input('selezionato');
+        }
+
+        if ($request->has('pagato')) {
+            $selezione->pagato = $request->input('pagato');
+        }
+
+        $selezione->save();
+
+        // 📧 INVIA EMAIL STATO
+        try {
+            // Scelta della view e del subject
+            if ($selezione->selezionato && $selezione->pagato) {
+                $subject = "✅ Your Stanceland application is confirmed and paid!";
+                $html = view('emails.selezione-pagata', compact('selezione'))->render();
+            } elseif ($selezione->selezionato && !$selezione->pagato) {
+                $subject = "🎉 Your car has been selected!";
+                $html = view('emails.selezione-non-pagata', compact('selezione'))->render();
+            } elseif ($selezione->selezionato === false) {
+                $subject = "❌ Application not selected";
+                $html = view('emails.selezione-non-selezionato', compact('selezione'))->render();
+            } else {
+                $subject = "🔍 Application under review";
+                $html = view('emails.selezione-in-corso', compact('selezione'))->render();
+            }
+
+            // Invio via SendGrid
+            $email = new SendGridMail();
+            $email->setFrom("selection@stanceland.com", "Stanceland");
+            $email->setSubject($subject);
+            $email->addTo($selezione->email, $selezione->nome);
+            $email->addContent("text/html", $html);
+
+            $sendgrid = new SendGrid(env('SENDGRID_API_KEY'));
+            $response = $sendgrid->send($email);
+
+            Log::info('Email inviata correttamente', ['email' => $selezione->email, 'status' => $response->statusCode()]);
+        } catch (\Exception $e) {
+            Log::error('Errore invio email: ' . $e->getMessage());
+        }
+
+        return back()->with('success', 'Stato aggiornato e notifica inviata via email.');
     }
 }

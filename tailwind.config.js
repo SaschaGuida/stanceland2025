@@ -19,7 +19,8 @@ export default {
                 buttoncolorhover: '#0E0C0A', //nero più scuro
             },
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                /* sans: ['Figtree', ...defaultTheme.fontFamily.sans], */
+                sans: ['"Inter"', 'sans-serif'],
             },
         },
     },

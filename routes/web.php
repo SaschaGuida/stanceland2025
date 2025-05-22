@@ -14,6 +14,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::view('/privacy-policy', 'legal.privacy-policy')->name('privacy');
+Route::view('/impressum', 'legal.impressum')->name('impressum');
+
 // Pagina eventi pubblici
 Route::get('event', [PublicEventController::class, 'index'])->name('event');
 

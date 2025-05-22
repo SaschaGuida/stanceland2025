@@ -26,13 +26,14 @@
     </div>
 
     {{-- SECONDO VIDEO COLLEZIONE ABBIGLIAMENTO --}}
-    <div class="relative w-full h-dvh">
-        <!-- Video visibile solo su dispositivi desktop (xl e superiori) -->
+<section class="w-full mt-24">
+    <div class="w-full h-[250px] overflow-hidden">
         <video class="w-full h-full object-cover" autoplay muted loop>
             <source src="/img/video/video-2.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </div>
+</section>
 
     {{-- CAROSELLO FOTO EVENTI --}}
     <div id="default-carousel" class="relative w-full mt-20" data-carousel="slide">

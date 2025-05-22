@@ -115,9 +115,9 @@
 
 {{-- VIDEO --}}
 <section class="w-full mt-24">
-    <div class="aspect-w-16 aspect-h-9">
+    <div class="w-full h-[350px] overflow-hidden">
         <video class="w-full h-full object-cover" autoplay muted loop>
-            <source src="/img/video/SL.mp4" type="video/mp4">
+            <source src="/img/video/video1.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </div>
