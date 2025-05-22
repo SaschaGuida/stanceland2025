@@ -31,12 +31,12 @@ class EventApplicationController extends Controller
                 'instagram' => 'nullable|string',
                 'marca' => 'required|string',
                 'modello' => 'required|string',
-                'anno' => 'required|integer|min:1960|max:' . $annoCorrente,
+                'anno' => 'required|integer|min:1900|max:' . $annoCorrente,
                 'modifiche' => 'required|string',
                 'targa' => 'required|string',
-                'foto1' => 'nullable|image|max:2048',
-                'foto2' => 'nullable|image|max:2048',
-                'foto3' => 'nullable|image|max:2048',
+                'foto1' => 'nullable|image|max:10240',
+                'foto2' => 'nullable|image|max:10240',
+                'foto3' => 'nullable|image|max:10240',
             ]);
 
             if (EventApplication::where('email', $data['email'])->exists()) {
